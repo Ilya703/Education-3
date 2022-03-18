@@ -92,4 +92,34 @@ window.addEventListener('DOMContentLoaded', () => {
     }
 
     setClock('.timer', deadline);
+
+    //Modal
+
+    const modalTriggers = document.querySelectorAll('[data-modal]'),
+        modal = document.querySelector('.modal'),
+        modalCloseBtn = document.querySelector('[data-close');
+
+    function closeModal () {
+        modal.classList.add('hide');
+        modal.classList.remove('show');
+        document.body.style.overflow = '';
+    }
+
+    function showModal () {
+        modal.classList.add('show');
+        modal.classList.remove('hide');    
+        document.body.style.overflow = 'hidden';
+    }
+
+    modalCloseBtn.addEventListener('click', closeModal);
+
+    modalTriggers.forEach(item => {
+        item.addEventListener('click', showModal);
+    });
+
+    modal.addEventListener('click', (e) => {
+        if (e.target && e.target === modal) {
+            closeModal();
+        }
+    });
 });
