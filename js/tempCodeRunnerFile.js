@@ -1,14 +1,8 @@
-class one {
-    constructor (a) {
-        this.a = a;
-        this.calc = function() {
-            console.log(a);
-        };
-    }
+const obj = {
+        'sss': 5,
+        'gggg': 10
+    };
 
-    sum() {
-        console.log(1);
-    }
-}
-const arr = new one(5);
-console.log(arr);
+    obj.forEach((i,s) => {
+        console.log(i,s);
+    });
