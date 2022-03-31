@@ -227,10 +227,15 @@ window.addEventListener('DOMContentLoaded', () => {
         form.addEventListener('submit', (e) => {
             e.preventDefault();
 
-            const statusMessage = document.createElement('div');
-            statusMessage.classList.add('status');
-            statusMessage.textContent = message.loading;
-            form.append(statusMessage);
+            const statusMessage = document.createElement('img');
+            statusMessage.src = message.loading;
+            //statusMessage.setAttricute('src', message.loading);
+            statusMessage.style.cssText = `
+                display: block;
+                margin: 0 auto;
+            `;
+            // form.append(statusMessage);
+            form.insertAdjacentElement('afterend', statusMessage);
 
             const request = new XMLHttpRequest();
             request.open('POST', 'server.php');
@@ -257,6 +262,7 @@ window.addEventListener('DOMContentLoaded', () => {
                     statusMessage.remove();
                 } else {
                     showThanksModal(message.failure);
+                    statusMessage.remove();
                 }
             });
         });
@@ -273,11 +279,11 @@ window.addEventListener('DOMContentLoaded', () => {
         thanksModal.innerHTML = `
             <div class="modal__content">
                 <div class="modal__close" data-close>&times;</div>
-                <div class="modal-title>${message}</div>
+                <div class="modal__title">${message}</div>
             </div>
         `;
 
-        document.querySelector('modal').append(thanksModal);
+        document.querySelector('.modal').append(thanksModal);
         setTimeout(() => {
             thanksModal.remove();
             previousModalDialog.classList.add('show');
