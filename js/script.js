@@ -189,7 +189,7 @@ window.addEventListener('DOMContentLoaded', () => {
         return await result.json();
     };
 
-    getResource('http://localhost:3000/requests')
+    getResource('http://localhost:3000/menu')
         .then((data) => {
             data.forEach(({img, altimg, title, descr, price}) => {
                 new MenuCard(
