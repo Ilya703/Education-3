@@ -1,8 +1,5 @@
-const obj = {
-        'sss': 5,
-        'gggg': 10
-    };
+const arr = ['aaa', 'bbb'];
 
-    obj.forEach((i,s) => {
-        console.log(i,s);
-    });
+console.log(arr.reduce((s, i) => {
+    return s + i;
+}, 'raccoon'));
