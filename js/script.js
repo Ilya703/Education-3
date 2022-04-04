@@ -371,7 +371,7 @@ window.addEventListener('DOMContentLoaded', () => {
     let offset = 0;
 
     if (slides.length < 10) {
-        total.textContent = `0${index}`;
+        total.textContent = `0${slides.length}`;
         current.textContent = `0${index}`;
     } else {
         total.textContent = slides.length;
@@ -380,7 +380,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
     slidesField.style.width = 100 * slides.length + '%';
     slidesField.style.display = 'flex';
-    slides.style.transition = '0.5s all';
+    slidesField.style.transition = '0.5s all';
 
     slidesWrapper.style.overflow = 'hidden';
 
@@ -398,7 +398,7 @@ window.addEventListener('DOMContentLoaded', () => {
         slidesField.style.transform = `translateX(-${offset}px)`;
         
         if (index == slides.length) {
-            index = 0;
+            index = 1;
         } else {
             index++;
         }
@@ -435,7 +435,7 @@ window.addEventListener('DOMContentLoaded', () => {
     // showSlides(1);
 
     // if (slides.length < 10) {
-    //     total.textContent = `0${index}`;
+    //     total.textContent = `0${slides.length}`;
     // } else {
     //     total.textContent = slides.length;
     // }
