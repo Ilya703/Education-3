@@ -398,7 +398,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
     for (let i = 0; i < slides.length; i++) {
         const dot = document.createElement('li');
-        dot.setAttriebute('data-slide-to', i + 1);
+        dot.setAttribute('data-slide-to', i + 1);
         dot.classList.add('dot');
         if (i == 0) {
             dot.style.opacity = 1;
@@ -428,7 +428,7 @@ window.addEventListener('DOMContentLoaded', () => {
             current.textContent = `${index}`;
         }
 
-        dots.forEach(item => {
+        dotsArr.forEach(item => {
             item.style.opacity = '.5';
         });
         dotsArr[index - 1].style.opacity = 1;
@@ -455,7 +455,7 @@ window.addEventListener('DOMContentLoaded', () => {
             current.textContent = `${index}`;
         }
 
-        dots.forEach(item => {
+        dotsArr.forEach(item => {
             item.style.opacity = '.5';
         });
         dotsArr[index - 1].style.opacity = 1;
@@ -516,7 +516,7 @@ window.addEventListener('DOMContentLoaded', () => {
             current.textContent = `${index}`;
         }
 
-        dots.forEach(item => {
+        dotsArr.forEach(item => {
             item.style.opacity = '.5';
         });
         dotsArr[index - 1].style.opacity = 1;
