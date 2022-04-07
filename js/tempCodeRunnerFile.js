@@ -1,1 +1,0 @@
-console.log('400px'.match(/\d/g).join(''));
