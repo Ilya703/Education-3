@@ -634,7 +634,7 @@ window.addEventListener('DOMContentLoaded', () => {
     }
 
     getDynamicInformation('#height');
-    getDynamicInformation('#wight');
+    getDynamicInformation('#weight');
     getDynamicInformation('#age');
 });
 
