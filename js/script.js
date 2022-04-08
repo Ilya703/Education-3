@@ -530,10 +530,41 @@ window.addEventListener('DOMContentLoaded', () => {
     // Calclulator 
 
     const result = document.querySelector('.calculating__result span');
+
     let sex, height, weight, age, ratio;
 
-    sex = 'female';
-    ratio = 1.375;
+    if (localStorage.getItem('sex')) {
+        sex = localStorage.getItem('sex');
+    } else {
+        sex = 'female';
+        localStorage.setItem('sex', 'female');
+    }
+
+    if (localStorage.getItem('ratio')) {
+        ratio = localStorage.getItem('ratio');
+    } else {
+        ratio = 1.375;
+        localStorage.setItem('ratio', 1.375);
+    }
+
+    function initLocalSettings (parent, activeClass) {
+        const elements = document.querySelectorAll(`${parent} div`);
+
+        elements.forEach(item => {
+            item.classList.remove(activeClass);
+
+            if (item.getAttribute('id') === localStorage.getItem('sex')) {
+                item.classList.add(activeClass);
+            }
+
+            if (item.getAttribute('data-ratio') === localStorage.getItem('ratio')) {
+                item.classList.add(activeClass);
+            }
+        });
+    }
+
+    initLocalSettings('#gender', 'calculating__choose-item_active');
+    initLocalSettings('.calculating__choose_big', 'calculating__choose-item_active');
 
     function calcTotal () {
         if (!sex || !height || !weight || !age || !ratio) {
@@ -555,10 +586,12 @@ window.addEventListener('DOMContentLoaded', () => {
 
         elements.forEach(item => {
             item.addEventListener('click', (e) => {
-                if (e.target.getAttribute('data-ration')) {
-                    ratio = +e.target.getAttribute('data-ration');
+                if (e.target.getAttribute('data-ratio')) {
+                    ratio = +e.target.getAttribute('data-ratio');
+                    localStorage.setItem('ratio', +e.target.getAttribute('data-ratio'));
                 } else {
                     sex = e.target.getAttribute('id');
+                    localStorage.setItem('sex', e.target.getAttribute('id'));
                 }
                 elements.forEach(item => {
                     item.classList.remove(activeClass);
@@ -578,6 +611,12 @@ window.addEventListener('DOMContentLoaded', () => {
         const input = document.querySelector(inputSelector);
 
         input.addEventListener('input', () => {
+
+            if (input.value.match(/\D/g)) {
+                input.style.border = '1px solid red';
+            } else {
+                input.style.border = 'none';
+            }
             switch (input.getAttribute('id')) {
                 case "height":
                     height = +input.value;
