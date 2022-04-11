@@ -1,7 +1,10 @@
-function postDataModule() {
+import {closeModal, showModal} from './modal';
+import {postData} from '../services/servises';
+
+function postDataModule(formSelector, timeModal) {
     //POST
 
-    const forms = document.querySelectorAll('form');
+    const forms = document.querySelectorAll(formSelector);
 
     const message = {
         loading: 'img/form/spinner.svg',
@@ -12,18 +15,6 @@ function postDataModule() {
     forms.forEach(item => {
         bindPostData(item);
     });
-
-    const postData = async (url, json) => {
-        const result = await fetch(url, {
-            method: 'POST',
-            body: json,
-            headers: {
-                'Content-type': 'application/json'
-            }
-        });
-
-        return await result.json();
-    };
 
     function bindPostData(form) {
         form.addEventListener('submit', (e) => {
@@ -88,7 +79,7 @@ function postDataModule() {
         const previousModalDialog = document.querySelector('.modal__dialog');
 
         previousModalDialog.classList.add('hide');
-        showModal();
+        showModal('.modal');
 
         const thanksModal = document.createElement('div');
         thanksModal.classList.add('modal__dialog');
@@ -99,14 +90,14 @@ function postDataModule() {
             </div>
         `;
 
-        document.querySelector('.modal').append(thanksModal);
+        document.querySelector('.modal', timeModal).append(thanksModal);
         setTimeout(() => {
             thanksModal.remove();
             previousModalDialog.classList.add('show');
             previousModalDialog.classList.remove('hide');
-            closeModal();
+            closeModal('.modal');
         }, 4000);
     }
 }
 
-module.exports = postDataModule;
+export default postDataModule;

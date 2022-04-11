@@ -1,15 +1,15 @@
-function sliderModule() {
+function sliderModule({container, slide, nextArrow, prevArrow, totalCounter, currentCounter, wrapper, field}) {
     //Slider
 
-    const slides = document.querySelectorAll('.offer__slide'),
-        previous = document.querySelector('.offer__slider-prev'),
-        next = document.querySelector('.offer__slider-next'),
-        total = document.querySelector('#total'),
-        current = document.querySelector('#current'),
-        slidesWrapper = document.querySelector('.offer__slider-wrapper'), // окошко
-        slidesField = document.querySelector('.offer__slider-inner'), // лента со слайдами
+    const slides = document.querySelectorAll(slide),
+        previous = document.querySelector(prevArrow),
+        next = document.querySelector(nextArrow),
+        total = document.querySelector(totalCounter),
+        current = document.querySelector(currentCounter),
+        slidesWrapper = document.querySelector(wrapper), // окошко
+        slidesField = document.querySelector(field), // лента со слайдами
         width = window.getComputedStyle(slidesWrapper).width, // ширина окошка
-        slider = document.querySelector('.offer__slider');
+        slider = document.querySelector(container);
     let index = 1;
     let offset = 0;
 
@@ -170,4 +170,4 @@ function sliderModule() {
     }));
 }
 
-module.exports = sliderModule;
+export default sliderModule;
