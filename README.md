@@ -10,7 +10,7 @@
   * Classes
   * DOM API
   * AJAX
-  * Primises
-  * NPM
+  * Promises
+  * npm
   * RegEx
   * Webpack
