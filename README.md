@@ -1,6 +1,6 @@
 # Food-site
 
-## The project has module structure that provides the opportunity of reusing some modules
+## The project has module structure that provides the opportunity of reusing modules
 
 ### What were used?
 * HTML5 
