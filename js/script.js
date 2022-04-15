@@ -28,8 +28,3 @@ window.addEventListener('DOMContentLoaded', () => {
     });
     calculatorModule();
 });
-
-
-
-
-
