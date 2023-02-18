@@ -51,3 +51,4 @@ function modal(triggerSelector, modalSelector, timeModal) {
 export default modal;
 export {closeModal};
 export {showModal};
+
